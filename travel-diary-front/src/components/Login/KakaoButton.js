@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import kakaoLogo from '../../images/kakaologo.svg';
@@ -56,27 +56,28 @@ function KakaoButton({ history }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const kakaoLoginClickHandler = () => {
-        const kakaoFetchUsers = async () => {
-            try {
-                setUsers(null);
-                setError(null);
-                setLoading(true);
-                const response = await axios.get(
-                    '/users/login/kakao'
-                );
-                history.push(response.config.url);
-                setUsers(response.data);
-            } catch(e) {
-                setError(e);
-            }
-            setLoading(false);
-        };
-        kakaoFetchUsers();
-    }
+    useEffect(() => {
+        return () => setLoading(false); 
+    }, []);
+
+    const kakaoFetchUsers = async () => {
+        try {
+            setUsers(null);
+            setError(null);
+            setLoading(true);
+            const response = await axios.get(
+                '/users/login/kakao'
+            );
+            history.push(response.config.url);
+            setUsers(response.data);
+        } catch(e) {
+            setError(e);
+        }
+        setLoading(false);
+    };   
 
     return (
-        <KakaoBtn onClick={kakaoLoginClickHandler}>
+        <KakaoBtn onClick={kakaoFetchUsers}>
             <img src={kakaoLogo} alt="kakao" className="icon"/>
             <span className="buttonText">카카오톡으로 로그인하기</span>
         </KakaoBtn>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import naverLogo from '../../images/naverlogo.svg';
@@ -49,33 +49,35 @@ const NaverBtn = styled.div`
     }
 `;
 
-function NaverButton() {
+function NaverButton({ history }) {
     
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const naverLoginClickHandler = ({ history }) => {
-        const naverFetchUsers = async () => {
-            try {
-                setUsers(null);
-                setError(null);
-                setLoading(true);
-                const response = await axios.get(
-                    '/users/login/naver'
-                );
-                history.push(response.config.url);
-                setUsers(response.data);
-            } catch(e) {
-                setError(e);
-            }
-            setLoading(false);
-        };
-        naverFetchUsers();
-    }
+    useEffect(() => {
+        return () => setLoading(false); 
+    }, []);
+
+    const naverFetchUsers = async () => {
+        try {
+            setUsers(null);
+            setError(null);
+            setLoading(true);
+            const response = await axios.get(
+                '/users/login/naver'
+            );
+            history.push(response.config.url);
+            setUsers(response.data);
+        } catch(e) {
+            setError(e);
+        }
+        setLoading(false);
+    };
+    
 
     return (
-        <NaverBtn onClick={naverLoginClickHandler}>
+        <NaverBtn onClick={naverFetchUsers}>
             <img src={naverLogo} className="icon" alt="naver" />
             <span className="buttonText">네이버로 로그인하기</span>
         </NaverBtn>
