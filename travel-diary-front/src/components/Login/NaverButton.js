@@ -65,7 +65,7 @@ function NaverButton({ history }) {
             setError(null);
             setLoading(true);
             const response = await axios.get(
-                '/users/login/naver'
+                '/users/hello'
             );
             history.push(response.config.url);
             setUsers(response.data);

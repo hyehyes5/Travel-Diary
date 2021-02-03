@@ -59,23 +59,21 @@ function GoogleButton({ history }) {
     }, []);
 
     const googleFetchUsers = async () => {
-            try {
-                setUsers(null);
-                setError(null);
-                setLoading(true);
-                const response = await axios.get(
-                    '/users/hello'
-                );
-                history.push(response.config.url);
-                setUsers(response.data);
-                console.log(response);
-                
-            } catch(e) {
-                setError(e);
-            }
-            setLoading(false);
-        };
-
+        try {
+            setUsers(null);
+            setError(null);
+            setLoading(true);
+            const response = await axios.get(
+                '/users/login/google'
+            );
+            history.push(response.config.url);
+            setUsers(response.data);
+            console.log(response);
+        } catch(e) {
+            setError(e);
+        }
+        setLoading(false);
+    };
     
     return (
         <GoogleBtn onClick={googleFetchUsers}>

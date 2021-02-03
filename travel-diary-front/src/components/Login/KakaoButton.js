@@ -74,7 +74,7 @@ function KakaoButton({ history }) {
             setError(e);
         }
         setLoading(false);
-    };   
+    };
 
     return (
         <KakaoBtn onClick={kakaoFetchUsers}>
