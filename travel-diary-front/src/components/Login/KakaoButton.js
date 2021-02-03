@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import kakaoLogo from '../../images/kakaologo.svg';
+import { withRouter } from 'react-router-dom';
 
 const KakaoBtn = styled.button`
     width: 296px;
@@ -49,7 +50,7 @@ const KakaoBtn = styled.button`
     }
 `;
 
-function KakaoButton() {
+function KakaoButton({ history }) {
 
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -64,6 +65,7 @@ function KakaoButton() {
                 const response = await axios.get(
                     '/users/login/kakao'
                 );
+                history.push(response.config.url);
                 setUsers(response.data);
             } catch(e) {
                 setError(e);
@@ -81,4 +83,4 @@ function KakaoButton() {
     )
 }
 
-export default KakaoButton;
+export default withRouter(KakaoButton);

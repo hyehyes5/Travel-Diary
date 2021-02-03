@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import googleLogo from '../../images/googlelogo.png';
+import { withRouter } from 'react-router-dom';
 
 const GoogleBtn = styled.button`
     width: 296px;
@@ -48,34 +49,40 @@ const GoogleBtn = styled.button`
     }
 `;
 
-function GoogleButton() {
+function GoogleButton({ history }) {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const googleLoginClickHandler = () => {
-        const googleFetchUsers = async () => {
+    useEffect(() => {
+        return () => setLoading(false); 
+    }, []);
+
+    const googleFetchUsers = async () => {
             try {
                 setUsers(null);
                 setError(null);
                 setLoading(true);
                 const response = await axios.get(
-                    '/users/login/google'
+                    '/users/hello'
                 );
+                history.push(response.config.url);
                 setUsers(response.data);
+                console.log(response);
+                
             } catch(e) {
                 setError(e);
             }
             setLoading(false);
         };
-        googleFetchUsers();
-    }
+
+    
     return (
-        <GoogleBtn onClick={googleLoginClickHandler}>
+        <GoogleBtn onClick={googleFetchUsers}>
             <img src={googleLogo} className="icon" alt="google" />
             <span className="buttonText">구글로 로그인하기</span>
         </GoogleBtn>
     );
 }
 
-export default GoogleButton;
+export default withRouter(GoogleButton);

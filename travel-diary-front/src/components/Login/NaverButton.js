@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import naverLogo from '../../images/naverlogo.svg';
-
+import { withRouter } from 'react-router-dom';
 
 const NaverBtn = styled.div`
     width: 296px;
@@ -55,7 +55,7 @@ function NaverButton() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const naverLoginClickHandler = () => {
+    const naverLoginClickHandler = ({ history }) => {
         const naverFetchUsers = async () => {
             try {
                 setUsers(null);
@@ -64,6 +64,7 @@ function NaverButton() {
                 const response = await axios.get(
                     '/users/login/naver'
                 );
+                history.push(response.config.url);
                 setUsers(response.data);
             } catch(e) {
                 setError(e);
@@ -81,4 +82,4 @@ function NaverButton() {
     );
 }
 
-export default NaverButton;
+export default withRouter(NaverButton);

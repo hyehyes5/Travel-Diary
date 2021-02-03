@@ -28,6 +28,7 @@ app.use(passport.session());
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.get("/users/hello", (req, res) => res.send("Hello World"));
 
 // Routes
 app.use("/", require("./routes/main"));
