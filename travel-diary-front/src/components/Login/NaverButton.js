@@ -56,6 +56,7 @@ function NaverButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        naverFetchUsers();
         return () => setLoading(false); 
     }, []);
 
@@ -65,9 +66,8 @@ function NaverButton({ history }) {
             setError(null);
             setLoading(true);
             const response = await axios.get(
-                '/users/hello'
+                '/users/login/naver'
             );
-            history.push(response.config.url);
             setUsers(response.data);
         } catch(e) {
             setError(e);
@@ -77,10 +77,12 @@ function NaverButton({ history }) {
     
 
     return (
-        <NaverBtn onClick={naverFetchUsers}>
+        <a href='/users/login/naver' style={{textDecoration:"none"}}>
+        <NaverBtn>
             <img src={naverLogo} className="icon" alt="naver" />
             <span className="buttonText">네이버로 로그인하기</span>
         </NaverBtn>
+        </a>
     );
 }
 

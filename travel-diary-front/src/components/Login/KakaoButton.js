@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import kakaoLogo from '../../images/kakaologo.svg';
-import { withRouter } from 'react-router-dom';
 
 const KakaoBtn = styled.button`
     width: 296px;
@@ -57,18 +56,23 @@ function KakaoButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        kakaoFetchUsers();
         return () => setLoading(false); 
     }, []);
 
     const kakaoFetchUsers = async () => {
+        const headers = {
+            'Access-Control-Allow-Origin': '*',        
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
         try {
             setUsers(null);
             setError(null);
             setLoading(true);
             const response = await axios.get(
-                '/users/login/kakao'
+                '/users/login/kakao', headers
             );
-            history.push(response.config.url);
             setUsers(response.data);
         } catch(e) {
             setError(e);
@@ -76,12 +80,16 @@ function KakaoButton({ history }) {
         setLoading(false);
     };
 
+    
+
     return (
-        <KakaoBtn onClick={kakaoFetchUsers}>
+        <a href='/users/login/kakao'>
+        <KakaoBtn>
             <img src={kakaoLogo} alt="kakao" className="icon"/>
             <span className="buttonText">카카오톡으로 로그인하기</span>
         </KakaoBtn>
+        </a>
     )
 }
 
-export default withRouter(KakaoButton);
+export default KakaoButton;

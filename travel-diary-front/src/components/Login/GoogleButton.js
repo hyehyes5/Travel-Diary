@@ -55,6 +55,7 @@ function GoogleButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        googleFetchUsers();
         return () => setLoading(false); 
     }, []);
 
@@ -66,9 +67,7 @@ function GoogleButton({ history }) {
             const response = await axios.get(
                 '/users/login/google'
             );
-            history.push(response.config.url);
             setUsers(response.data);
-            console.log(response);
         } catch(e) {
             setError(e);
         }
@@ -76,10 +75,12 @@ function GoogleButton({ history }) {
     };
     
     return (
-        <GoogleBtn onClick={googleFetchUsers}>
+        <a href='/users/login/google'>
+        <GoogleBtn>
             <img src={googleLogo} className="icon" alt="google" />
             <span className="buttonText">구글로 로그인하기</span>
         </GoogleBtn>
+        </a>
     );
 }
 
