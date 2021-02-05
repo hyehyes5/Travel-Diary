@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import kakaoLogo from '../../images/kakaologo.svg';
+import { withRouter } from 'react-router-dom';
 
 const KakaoBtn = styled.button`
     width: 296px;
@@ -92,4 +93,4 @@ function KakaoButton({ history }) {
     )
 }
 
-export default KakaoButton;
+export default withRouter(KakaoButton);
