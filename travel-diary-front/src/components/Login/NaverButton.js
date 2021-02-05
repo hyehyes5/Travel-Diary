@@ -56,7 +56,6 @@ function NaverButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        naverFetchUsers();
         return () => setLoading(false); 
     }, []);
 
@@ -78,7 +77,7 @@ function NaverButton({ history }) {
 
     return (
         <a href='/users/login/naver' style={{textDecoration:"none"}}>
-        <NaverBtn>
+        <NaverBtn onClick={naverFetchUsers}>
             <img src={naverLogo} className="icon" alt="naver" />
             <span className="buttonText">네이버로 로그인하기</span>
         </NaverBtn>

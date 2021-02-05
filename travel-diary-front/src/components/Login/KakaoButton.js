@@ -57,7 +57,6 @@ function KakaoButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        kakaoFetchUsers();
         return () => setLoading(false); 
     }, []);
 
@@ -85,7 +84,7 @@ function KakaoButton({ history }) {
 
     return (
         <a href='/users/login/kakao'>
-        <KakaoBtn>
+        <KakaoBtn onClick={kakaoFetchUsers}>
             <img src={kakaoLogo} alt="kakao" className="icon"/>
             <span className="buttonText">카카오톡으로 로그인하기</span>
         </KakaoBtn>

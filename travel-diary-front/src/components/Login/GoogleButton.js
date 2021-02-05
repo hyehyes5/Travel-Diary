@@ -55,7 +55,6 @@ function GoogleButton({ history }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        googleFetchUsers();
         return () => setLoading(false); 
     }, []);
 
@@ -76,7 +75,7 @@ function GoogleButton({ history }) {
     
     return (
         <a href='/users/login/google'>
-        <GoogleBtn>
+        <GoogleBtn onClick={googleFetchUsers}>
             <img src={googleLogo} className="icon" alt="google" />
             <span className="buttonText">구글로 로그인하기</span>
         </GoogleBtn>
