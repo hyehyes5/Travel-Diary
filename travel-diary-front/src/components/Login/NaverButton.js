@@ -24,13 +24,12 @@ const NaverBtn = styled.div`
         width: 15.1px;
         height: 15px;
         margin: 0 auto;
-        margin-left: 14px;
+        margin-left: 23px;
         margin-top: 12px;
         margin-bottom: 13px;
         background-color: #5ab133;
     }
     span.buttonText {
-        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
         vertical-align: middle;
         width: 120px;
         height: 16px;
@@ -38,13 +37,8 @@ const NaverBtn = styled.div`
         margin-left: 56.9px;
         margin-top: 12px;
         margin-bottom: 12px;
-        font-family: "Roboto", sans-serif;
         font-size: 14px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
+        font-weight: 700;
         color: #ffffff;
     }
 `;

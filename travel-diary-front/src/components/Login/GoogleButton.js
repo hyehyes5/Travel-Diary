@@ -24,13 +24,13 @@ const GoogleBtn = styled.button`
         width: 20px;
         height: 24px;
         margin: 0 auto;
-        margin-left: 4px;
+        margin-left: 14px;
         margin-top: 8px;
         margin-bottom: 8px;
         background-color: #f2f2f2;
     }
     span.buttonText {
-        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+        font-family: 'Noto Sans KR';
         vertical-align: middle;
         width: 107px;
         height: 16px;
@@ -38,13 +38,8 @@ const GoogleBtn = styled.button`
         margin-left: 60px;
         margin-top: 12px;
         margin-bottom: 12px;
-        font-family: "Roboto", sans-serif;
         font-size: 14px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
+        font-weight: 700;
         color: #4f4f4f;
     }
 `;

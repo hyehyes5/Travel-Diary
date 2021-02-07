@@ -25,13 +25,13 @@ const KakaoBtn = styled.button`
         width: 20px;
         height: 18.5px;
         margin: 0 auto;
-        margin-left: 4px;
+        margin-left: 14px;
         margin-top: 10px;
         margin-bottom: 11.5px;
         background-color: #f6e24b;
     }
     span.buttonText {
-        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+        font-family: 'Noto Sans KR';
         vertical-align: middle;
         width: 146px;
         height: 16px;
@@ -39,13 +39,8 @@ const KakaoBtn = styled.button`
         margin-left: 48px;
         margin-top: 12px;
         margin-bottom: 12px;
-        font-family: 'Roboto', sans-serif;
         font-size: 14px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
+        font-weight: 700;
         color: #000000;
     }
 `;

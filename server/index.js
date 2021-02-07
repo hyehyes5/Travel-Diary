@@ -29,7 +29,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/users/hello", (req, res) => res.send("Hello World"));
-app.get("/users/hello2", (req, res) => res.send("Hello World2"));
 
 // Routes
 app.use("/", require("./routes/main"));

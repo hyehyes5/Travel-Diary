@@ -3,11 +3,11 @@ import { createGlobalStyle } from 'styled-components';
 import LoginPage from "./components/Login/LoginPage";
 import MainPage from './components/MainPage';
 import { BrowserRouter, Route } from 'react-router-dom';
-import GoogleButton from './components/Login/GoogleButton';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: #e9ecef
+    background: #e9ecef;
+    font-family : 'Roboto', 'Noto Sans KR';
     
   }
 `;
@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
       <GlobalStyle />
       <Route path='/' component = { LoginPage } exact/>
-      <Route exact path='/mainpage' component={ MainPage } />
+      <Route exact path='/main' component={ MainPage } />
       </BrowserRouter>
     </>
   );
