@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import GoogleButton from './GoogleButton';
 import KakaoButton from './KakaoButton';

@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import LoginPage from "./components/Login/LoginPage";
 import MainPage from './components/MainPage';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Test from './components/Test';
 
 const GlobalStyle = createGlobalStyle`
   body {
