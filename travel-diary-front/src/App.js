@@ -8,8 +8,7 @@ import Test from './components/Test';
 const GlobalStyle = createGlobalStyle`
   body {
     background: #e9ecef;
-    font-family : 'Roboto', 'Noto Sans KR';
-    
+    font-family : 'Roboto', 'Noto Sans KR';   
   }
 `;
 function App() {
@@ -17,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
       <GlobalStyle />
-      <Route path='/' component = { LoginPage } exact/>
+      <Route path='/' component = { Test } exact/>
       <Route exact path='/main' component={ MainPage } />
       </BrowserRouter>
     </>

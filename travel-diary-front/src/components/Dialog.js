@@ -41,6 +41,10 @@ const DialogBlock = styled.div`
     padding: 10px;
     background: #ffffff;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
     animation-duration: 0.25s;
     animation-timing-function: ease-out;
@@ -57,55 +61,24 @@ const DetailButton = styled.button`
     color: #000000;
     cursor: pointer;
     font-family: 'Noto Sans KR';
-    font-size: 13.5px; 
+    font-size: 14px; 
 `;
-
-const Wrapper = styled.div`
-    & + & {
-        margin-top: 16px;
-    }
-`;
-
 
 function Dialog() {
+    const local = [
+        '강남구', '강동구', '강서구', '강북구', '관악구', 
+        '광진구', '구로구', '금천구', '노원구', '동대문구', 
+        '도봉구', '동작구', '마포구', '서대문구', '성동구', 
+        '성북구', '서초구', '송파구', '영등포구', '용산구', 
+        '양천구', '은평구', '종로구', '중구', '중랑구'
+    ]
     return (
         <DarkBackground>
             <DialogBlock>
-                <Wrapper>
-                <DetailButton onClick={() => alert("강남구")}>강남구</DetailButton>
-                <DetailButton onClick={() => alert("강동구")}>강동구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>강서구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>강북구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>관악구</DetailButton>
-                </Wrapper>
-                <Wrapper>
-                <DetailButton onClick={() => alert("지역구")}>광진구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>구로구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>금천구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>노원구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>동대문구</DetailButton>
-                </Wrapper>
-                <Wrapper>
-                <DetailButton onClick={() => alert("지역구")}>도봉구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>동작구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>마포구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>서대문구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>성동구</DetailButton>
-                </Wrapper>
-                <Wrapper>
-                <DetailButton onClick={() => alert("지역구")}>성북구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>서초구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>송파구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>영등포구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>용산구</DetailButton>
-                </Wrapper>
-                <Wrapper>
-                <DetailButton onClick={() => alert("지역구")}>양천구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>은평구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>종로구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>중구</DetailButton>
-                <DetailButton onClick={() => alert("지역구")}>중랑구</DetailButton>
-                </Wrapper>
+                {local.map(
+                    (name, index) =>
+                    <DetailButton key={index} onClick={() => alert(name)}>{name}</DetailButton>
+                )}
             </DialogBlock>
         </DarkBackground>
     );
