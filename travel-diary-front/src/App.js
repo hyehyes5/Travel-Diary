@@ -16,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
       <GlobalStyle />
-      <Route path='/' component = { Test } exact/>
+      <Route path='/' component = { LoginPage } exact/>
       <Route exact path='/main' component={ MainPage } />
       </BrowserRouter>
     </>
